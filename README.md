@@ -1,0 +1,2 @@
+# fast-log
+fast-log
