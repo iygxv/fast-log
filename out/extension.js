@@ -28,11 +28,11 @@ function activate(context) {
             // 根据变量定义和缩进的信息，插入console.log语句
             editor.edit((editBuilder) => {
                 if (variable) {
-                    editBuilder.insert(new vscode.Position(line + 1, 0), `${indent}console.log(${variable[0]})\n`);
+                    editBuilder.insert(new vscode.Position(line + 1, 0), `${indent}console.log('${variable[0]}' + ${variable[0]})\n`);
                 }
                 else {
                     ;
-                    text && editBuilder.insert(new vscode.Position(line + 1, 0), `${indent}console.log(${text})\n`);
+                    text && editBuilder.insert(new vscode.Position(line + 1, 0), `${indent}console.log('${text}' + ${text})\n`);
                 }
             });
         }
