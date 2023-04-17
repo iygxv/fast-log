@@ -2,7 +2,7 @@
   "name": "fast-log",
   "displayName": "Fast Log",
   "description": "",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "publisher": "guxin",
   "icon": "images/icon.png",
   "engines": {
@@ -29,6 +29,8 @@
     {
       "command": "insertConsoleLog",
       "key": "ctrl+shift+m",
+      "linux": "ctrl+shift+m",
+      "win":"ctrl+shift+m",
       "mac": "cmd+shift+m",
       "when": "editorTextFocus"
     }
