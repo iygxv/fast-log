@@ -2,11 +2,11 @@
   "name": "fast-log",
   "displayName": "Fast Log",
   "description": "",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "publisher": "guxin",
   "icon": "images/icon.png",
   "engines": {
-    "vscode": "^1.77.0"
+    "vscode": "^1.76.0"
   },
   "categories": [
     "Other"
@@ -43,7 +43,7 @@
     "test": "node ./out/test/runTest.js"
   },
   "devDependencies": {
-    "@types/vscode": "^1.77.0",
+    "@types/vscode": "^1.76.0",
     "@types/glob": "^8.1.0",
     "@types/mocha": "^10.0.1",
     "@types/node": "16.x",
