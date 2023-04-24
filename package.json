@@ -5,6 +5,7 @@
   "version": "1.0.5",
   "publisher": "guxin",
   "icon": "images/icon.png",
+   "description": "a vscode plugin that can quickly console.log",
   "engines": {
     "vscode": "^1.76.0"
   },
