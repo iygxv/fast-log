@@ -11,7 +11,6 @@ let supportedLangs = [
 export const insertConsoleLog = () => {
   // 获取当前编辑器的选区
  const editor = vscode.window.activeTextEditor;
- editor && console.log(editor.document.languageId);
   if (editor && supportedLangs.includes(editor.document.languageId)) {
    // 获取选中文本
    const selection = editor.selection;
