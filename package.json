@@ -1,8 +1,7 @@
 {
   "name": "fast-log",
   "displayName": "Fast Log",
-  "description": "",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "publisher": "guxin",
   "icon": "images/icon.png",
    "description": "a vscode plugin that can quickly console.log",
