@@ -28,9 +28,9 @@ export const insertConsoleLog = () => {
    // 根据变量定义和缩进的信息，插入console.log语句
    editor.edit((editBuilder) => {
      if (variable) {
-       editBuilder.insert(new vscode.Position(line + 1, 0), `${indent}console.log('${variable[2]}:' + ${variable[2]})\n`);
+       editBuilder.insert(new vscode.Position(line + 1, 0), `${indent}console.log('${variable[2]}:', ${variable[2]})\n`);
      } else {;
-       text && editBuilder.insert(new vscode.Position(line + 1, 0), `${indent}console.log('${text}:' + ${text})\n`);
+       text && editBuilder.insert(new vscode.Position(line + 1, 0), `${indent}console.log('${text}:', ${text})\n`);
      }
    });
  }
