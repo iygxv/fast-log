@@ -9,6 +9,8 @@ let supportedLangs = [
 ];
 
 export const insertConsoleLog = () => {
+  console.log(333);
+  
   // 获取当前编辑器的选区
   const editor = vscode.window.activeTextEditor;
   if (editor && supportedLangs.includes(editor.document.languageId)) {
@@ -31,6 +33,7 @@ export const insertConsoleLog = () => {
     editor.edit((editBuilder) => {
       // 优先选中文本
       if (text) {
+      console.log('text:', text)
         editBuilder.insert(
           new vscode.Position(line + 1, 0),
           `${indent}console.log('${text}:', ${text})\n`
@@ -42,6 +45,33 @@ export const insertConsoleLog = () => {
             `${indent}console.log('${variable[2]}:', ${variable[2]})\n`
           );
         }
+      }
+    });
+  }
+};
+
+export const deleteAllConsoleLog = () => {
+  console.log('delete all console.log');
+  
+  const editor = vscode.window.activeTextEditor;
+  if (editor) {
+    const document = editor.document;
+    const deleteEdits: vscode.TextEdit[] = [];
+
+    for (let i = 0; i < document.lineCount; i++) {
+      const line = document.lineAt(i);
+      if (line.text.includes('console.log')) {
+        const start = new vscode.Position(i, line.text.indexOf('console.log'));
+        const end = new vscode.Position(i, line.range.end.character);
+        const range = new vscode.Range(start, end);
+        const deleteEdit = vscode.TextEdit.delete(range);
+        deleteEdits.push(deleteEdit);
+      }
+    }
+
+    editor.edit(builder => {
+      for (const deleteEdit of deleteEdits) {
+        builder.replace(deleteEdit.range, deleteEdit.newText);
       }
     });
   }
