@@ -1,10 +1,10 @@
 {
   "name": "fast-log",
   "displayName": "Fast Log",
-  "version": "1.0.7",
+  "version": "1.0.9",
   "publisher": "guxin",
   "icon": "images/icon.png",
-   "description": "a vscode plugin that can quickly console.log",
+  "description": "a vscode plugin that can quickly console.log",
   "engines": {
     "vscode": "^1.76.0"
   },
@@ -59,5 +59,8 @@
     "glob": "^8.1.0",
     "mocha": "^10.2.0",
     "typescript": "^4.9.5"
+  },
+  "dependencies": {
+    "vsce": "^2.15.0"
   }
 }
