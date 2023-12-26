@@ -16,16 +16,16 @@
     "url": "https://github.com/iygxv/fast-log"
   },
   "activationEvents": [],
-  "main": "./out/extension.ts",
+  "main": "./out/extension",
   "contributes": {
     "commands": [
       {
         "command": "insertConsoleLog",
-        "title": "insert console.log statement"
+        "title": "handle insert console.log"
       },
       {
         "command": "deleteAllConsoleLog",
-        "title": "delete all console.log statement"
+        "title": "handle delete all console.log"
       }
     ],
     "keybindings": [
@@ -35,14 +35,6 @@
         "linux": "ctrl+shift+m",
         "win": "ctrl+shift+m",
         "mac": "cmd+shift+m",
-        "when": "editorTextFocus"
-      },
-      {
-        "command": "deleteAllConsoleLog",
-        "key": "ctrl+shift+l",
-        "linux": "ctrl+shift+l",
-        "win": "ctrl+shift+l",
-        "mac": "cmd+shift+l",
         "when": "editorTextFocus"
       }
     ]

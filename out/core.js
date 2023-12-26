@@ -10,7 +10,6 @@ let supportedLangs = [
     "vue",
 ];
 const insertConsoleLog = () => {
-    console.log(333);
     // 获取当前编辑器的选区
     const editor = vscode.window.activeTextEditor;
     if (editor && supportedLangs.includes(editor.document.languageId)) {
@@ -43,26 +42,55 @@ const insertConsoleLog = () => {
     }
 };
 exports.insertConsoleLog = insertConsoleLog;
+// export const deleteAllConsoleLog = () => {
+//   console.log('delete all console.log');
+//   const editor = vscode.window.activeTextEditor;
+//   if (editor) {
+//     const document = editor.document;
+//     const deleteEdits: vscode.TextEdit[] = [];
+//     for (let i = 0; i < document.lineCount; i++) {
+//       const line = document.lineAt(i);
+//       if (line.text.includes('console.log')) {
+//         const start = new vscode.Position(i, line.text.indexOf('console.log'));
+//         const end = new vscode.Position(i, line.range.end.character);
+//         const range = new vscode.Range(start, end);
+//         const deleteEdit = vscode.TextEdit.delete(range);
+//         deleteEdits.push(deleteEdit);
+//       }
+//     }
+//     editor.edit(builder => {
+//       for (const deleteEdit of deleteEdits) {
+//         builder.replace(deleteEdit.range, deleteEdit.newText);
+//       }
+//     });
+//   }
+// };
 const deleteAllConsoleLog = () => {
-    console.log('delete all console.log');
     const editor = vscode.window.activeTextEditor;
     if (editor) {
+        // 获取当前文档
         const document = editor.document;
+        // 创建空数组，用于存储删除操作
         const deleteEdits = [];
+        // 遍历文档的每一行
         for (let i = 0; i < document.lineCount; i++) {
+            // 获取当前行的 line 对象
             const line = document.lineAt(i);
+            // 检查当前行的内容是否包含 'console.log'
             if (line.text.includes('console.log')) {
-                const start = new vscode.Position(i, line.text.indexOf('console.log'));
-                const end = new vscode.Position(i, line.range.end.character);
-                const range = new vscode.Range(start, end);
+                // 获取当前行的范围，包括整行和换行符
+                const range = line.rangeIncludingLineBreak;
+                // 创建删除操作
                 const deleteEdit = vscode.TextEdit.delete(range);
+                // 将删除操作添加到 deleteEdits 数组中
                 deleteEdits.push(deleteEdit);
             }
         }
         editor.edit(builder => {
-            for (const deleteEdit of deleteEdits) {
-                builder.replace(deleteEdit.range, deleteEdit.newText);
-            }
+            deleteEdits.forEach(deleteEdit => {
+                console.log('deleteEdit:', deleteEdit);
+                builder.replace(deleteEdit.range, deleteEdit.newText); // 执行删除操作
+            });
         });
     }
 };

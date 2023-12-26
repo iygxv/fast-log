@@ -1,8 +1,9 @@
 import * as vscode from 'vscode';
 import { insertConsoleLog, deleteAllConsoleLog } from './core';
 
+
 export function activate(context: vscode.ExtensionContext) {
-    
+
   const commands: Array<{
     command: string;
     callback: (...args: any[]) => any;
@@ -12,6 +13,7 @@ export function activate(context: vscode.ExtensionContext) {
     { command: 'deleteAllConsoleLog', callback: deleteAllConsoleLog },
   ];
 
+
   for (const cmd of commands) {
     const disposable = vscode.commands.registerCommand(
       cmd.command,
@@ -19,11 +21,10 @@ export function activate(context: vscode.ExtensionContext) {
     );
     context.subscriptions.push(disposable);
 
-    if (cmd.keybinding) {
-      const insertCommand = cmd.keybinding + (process.platform === 'darwin' ? 'Mac' : 'Windows');
-      context.subscriptions.push(
-        vscode.commands.registerCommand(insertCommand, cmd.callback)
-      );
+    const insertCommand = cmd.command + (process.platform === 'darwin' ? 'Mac' : 'Windows');
+
+    context.subscriptions.push(
+      vscode.commands.registerCommand(insertCommand, cmd.callback)
+    );
     }
-  }
 }

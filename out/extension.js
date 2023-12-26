@@ -11,10 +11,8 @@ function activate(context) {
     for (const cmd of commands) {
         const disposable = vscode.commands.registerCommand(cmd.command, cmd.callback);
         context.subscriptions.push(disposable);
-        if (cmd.keybinding) {
-            const insertCommand = cmd.keybinding + (process.platform === 'darwin' ? 'Mac' : 'Windows');
-            context.subscriptions.push(vscode.commands.registerCommand(insertCommand, cmd.callback));
-        }
+        const insertCommand = cmd.command + (process.platform === 'darwin' ? 'Mac' : 'Windows');
+        context.subscriptions.push(vscode.commands.registerCommand(insertCommand, cmd.callback));
     }
 }
 exports.activate = activate;
